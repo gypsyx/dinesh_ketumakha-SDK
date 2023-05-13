@@ -16,34 +16,35 @@ To install using ``pip`` do the following in a virtual environment
 The following is how you can use this SDK
 
     from lotrpy.lotr import LOTR
+    
     token = "bearer_token_value"
     base_url = "https"//server.com/api/v1"
 
-    lotr_api = LOTR(token, base_url)
+    lotr = LOTR(token, base_url)
     
     # get all movies
-    lotr_api.get_movies()
+    lotr.get_movies()
 
     # get all movies on page 2 if there was more than 1 page 
     # in the response above
-    lotr_api.get_movies(page=2)
+    lotr.get_movies(page=2)
 
     # get all movies, limit each response to 5  items
-    lotr_api.get_movies(limit = 5)
+    lotr.get_movies(limit = 5)
 
     # get info on a single movie
     movie_id = "123lkdlfs"
-    lotr_api.get_movie(movie_id)
+    lotr.get_movie(movie_id)
 
     # get all quotes. paging and limit apply just like above
-    lotr_api.get_quotes()
+    lotr.get_quotes()
 
     # get all quotes from one specific movie
-    lotr_api.get_quotes_from_movie(movie_id)
+    lotr.get_quotes_from_movie(movie_id)
 
     # get one specific quote. Need to get the quote_id from 
     # response of get_quotes()
-    lotr_api.get_quote(quote_id) 
+    lotr.get_quote(quote_id) 
 
 
 # Testing
