@@ -1,3 +1,5 @@
+# Serializers & Deserializers module
+
 from typing import Union
 from lotrpy.models import (
     Movie,
@@ -9,7 +11,7 @@ from lotrpy.models import (
 def deserialize_movies(movies: dict) -> MovieListResponse:
     resp = MovieListResponse(
         limit = movies['limit'],
-        offset = movies['offset'],
+        offset = movies['offset'] if "offset" in movies else "",
         page = movies['page'],
         pages = movies['pages'],
         total = movies['total'],
@@ -35,6 +37,7 @@ def deserialize_movie(movie: dict) -> Union[Movie, None]:
     if not movie["docs"]:
         return None
     
+    # this call should never return more than one item in response
     movie = movie["docs"][0]
     
     return Movie(
@@ -52,6 +55,7 @@ def deserialize_quote(quote: dict) -> Union[Quote, None]:
     if not quote["docs"]:
         return None
     
+    # this call should never return more than one item in response
     quote = quote["docs"][0]
 
     return Quote(
@@ -64,7 +68,7 @@ def deserialize_quote(quote: dict) -> Union[Quote, None]:
 def deserialize_quotes(quotes: dict) -> QuoteListResponse:
     resp = QuoteListResponse(
         limit = quotes['limit'],
-        offset = quotes['offset'],
+        offset = quotes['offset'] if "offset" in quotes else "",
         page = quotes['page'],
         pages = quotes['pages'],
         total = quotes['total'],

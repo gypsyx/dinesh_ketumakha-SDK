@@ -11,7 +11,18 @@ from requests.exceptions import HTTPError
 def test_get_movies(lotr_object):
     resp = lotr_object.get_movies()
     assert len(resp.movies) > 0
-    assert isinstance(resp, MovieListResponse)
+
+def test_get_movies_with_paging_and_limit(lotr_object):
+    # we should received on page with 2 results with several pending
+    # pages
+    resp = lotr_object.get_movies(limit = 2)
+    assert len(resp.movies) == 2
+    assert resp.page < resp.pages
+
+    # testing paging by fetching the next page
+    next_page = lotr_object.get_movies(limit = 2, page = 2)
+    assert len(next_page.movies) == 2
+    assert next_page.page == resp.page + 1
 
 
 def test_get_movie(lotr_object):
@@ -46,5 +57,16 @@ def test_get_quotes(lotr_object):
     assert isinstance(resp, QuoteListResponse)
 
 
+def test_get_quotes_with_paging_and_limit(lotr_object):
+    # we should have received one page with 2 results with several pending
+    # pages
+    resp = lotr_object.get_quotes(limit = 2)
+    assert len(resp.quotes) == 2
+    assert resp.page < resp.pages
+
+    # testing paging by fetching the next page
+    next_page = lotr_object.get_quotes(limit = 2, page = 2)
+    assert len(next_page.quotes) == 2
+    assert next_page.page == resp.page + 1
 
 

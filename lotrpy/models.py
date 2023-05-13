@@ -24,7 +24,8 @@ class Quote(NamedTuple):
 
 class BaseResponse(NamedTuple):
     limit: int
-    offset: int
+    # This is set to string though a number to accommodate for its conditional presence
+    offset: str
     page: int
     pages: int
     total: int
