@@ -15,7 +15,6 @@ classifiers = [
 
 [project.optional-dependencies]
 test = ["pytest"]
-# add pytest-coverage
 
 [build-system]
 requires = ["hatchling"]
