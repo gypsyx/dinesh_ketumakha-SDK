@@ -1,6 +1,6 @@
 [project]
 name = "lotrpy"
-version = "1.0.0"
+version = "1.0.1"
 description = "Lord Of the Rings Python SDK"
 readme = "README.md"
 dependencies = [
@@ -19,6 +19,5 @@ test = ["pytest"]
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
 
 

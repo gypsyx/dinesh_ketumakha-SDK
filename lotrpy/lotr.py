@@ -87,7 +87,7 @@ class LOTR():
         Returns:
             ```QuoteListResponse``` object
         """
-        response = make_request(self.token, self.server_url, f"movie/{movie_id}/quote")
+        response = make_request(self.token, self.server_url, f"movie/{movie_id}/quote", **kwargs)
         return deserialize_quotes(response)
 
     def get_quote(self, quote_id: str) -> Union[Quote, None]:
