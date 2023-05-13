@@ -41,7 +41,7 @@ def test_deserialize_movies(movies):
     assert resp.page == 1
     assert resp.total == 8
     assert resp.pages == 4
-    assert resp.offset == 0
+    assert int(resp.offset) == 0
     assert len(resp.movies) == 2
     assert resp.movies[0].name == "The Lord of the Rings Series"
     assert resp.movies[1].name == "The Hobbit Series"

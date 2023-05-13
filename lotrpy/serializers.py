@@ -11,7 +11,7 @@ from lotrpy.models import (
 def deserialize_movies(movies: dict) -> MovieListResponse:
     resp = MovieListResponse(
         limit = movies['limit'],
-        offset = movies['offset'] if "offset" in movies else "",
+        offset = str(movies['offset']) if "offset" in movies else "",
         page = movies['page'],
         pages = movies['pages'],
         total = movies['total'],
@@ -68,7 +68,7 @@ def deserialize_quote(quote: dict) -> Union[Quote, None]:
 def deserialize_quotes(quotes: dict) -> QuoteListResponse:
     resp = QuoteListResponse(
         limit = quotes['limit'],
-        offset = quotes['offset'] if "offset" in quotes else "",
+        offset = str(quotes['offset']) if "offset" in quotes else "",
         page = quotes['page'],
         pages = quotes['pages'],
         total = quotes['total'],
